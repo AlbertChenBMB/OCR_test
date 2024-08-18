@@ -1,9 +1,8 @@
 openai
-streamlit
 json
+streamlit
 PIL
 pickle
-matplotlib
 paddleocr ==2.8.1
 paddlepaddle-gpu==2.6.1
 
