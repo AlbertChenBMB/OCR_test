@@ -11,7 +11,6 @@ import numpy as np
 st.set_page_config(page_title="證件文字提取", layout="wide")
 
 # 設置 OpenAI API key（請替換為你的 API key）
-openai.api_key = "sk-DNQOn9jy5PgTvSns4GQOauqy6CqT4IAjm0E4tXWc1oT3BlbkFJOEk640jmdlNj-YOVLqTJCzt5bWXXScxK7lt5hJTA4A"
 with st.sidebar:
     OPENAI_API_KEY = st.text_input("OpenAI API Key", key="chatbot_api_key", type="password")
 os.environ['CUDA_VISIBLE_DEVICES'] = ''
