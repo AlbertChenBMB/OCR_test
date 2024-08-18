@@ -19,8 +19,8 @@ COPY . /app
 RUN pip install --no-cache-dir -r requirements.txt || pip install --no-cache-dir -r requirements.txt
 
 
-# 暴露端口80
-EXPOSE 80
+# 暴露端口8000
+EXPOSE 8000
 
 # 指定容器启动时执行的命令
 CMD ["streamlit", "run", "ID_identification.py", "--server.address", "0.0.0.0", "--server.port", "8000", "--server.enableXsrfProtection", "false"]
