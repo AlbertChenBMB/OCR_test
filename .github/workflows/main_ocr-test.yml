@@ -11,10 +11,10 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-     - name: Checkout repository
+    - name: Checkout repository
       uses: actions/checkout@v4
 
-      - name: Login to Azure CLI test
+    - name: Login to Azure CLI
       uses: azure/login@v1
       with:
         creds: ${{ secrets.AZURE_CREDENTIALS }}
@@ -23,12 +23,10 @@ jobs:
       run: |
         az acr login --name streamlitdev001
 
-    # Build Docker image with build-args
     - name: Build Docker image
       run: |
         docker build --build-arg OPENAI_API_KEY=${{ secrets.OPENAI_API_KEY }} -t streamlitdev001.azurecr.io/sf/sf_poc:1.1 .
 
-    # Push the built Docker image to Azure Container Registry
     - name: Push Docker image to Azure Container Registry
       run: |
         docker push streamlitdev001.azurecr.io/sf/sf_poc:1.1
@@ -36,12 +34,9 @@ jobs:
     - name: Deploy to Azure App Service
       uses: azure/webapps-deploy@v2
       with:
-        app-name: OCR-test 
+        app-name: 'OCR-test'
         publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
-        images: streamlitdev001.azurecr.io/sf/sf_poc:1.1
+        images: 'streamlitdev001.azurecr.io/sf/sf_poc:1.1'
 
     - name: Logout of Azure ACR
       run: docker logout streamlitdev001.azurecr.io
-
-## images: streamlitdev001.azurecr.io/shinfu/st_bot:1.0
-
