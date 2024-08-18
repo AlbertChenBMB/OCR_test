@@ -1,0 +1,9 @@
+openai
+streamlit
+paddleocr
+json
+PIL
+pickle
+matplotlib
+
+
